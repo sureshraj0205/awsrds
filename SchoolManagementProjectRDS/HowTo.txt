@@ -1,0 +1,52 @@
+
+
+Project Details :- Demostrate how to use AWS Beanstack and AWS RDS services.
+
+		   Here we use prebuilt php codes is named "schoolmanagement". Code is shared in folder
+
+
+Steps to follow:-
+
+1) Configure AWS Elastic Beanstack - with php component
+
+2) While configuring Beanstack select on your own vpc and subnet, same vpc and subnet need to be used for rds deployment also
+
+3) Deploy rds with mysql as database, create database name "schoolmanagement"
+
+4) Select Security group rds and allow source 0.0.0.0/0
+
+5) Copy rds endpoint ( url and port)
+
+6) Edit file - schoolmanagement\config\Database
+
+modify below lines with new rds end point,db username which you created while creating rds and password -
+
+
+private $_host = private $_host = "mydboption.c2mizpjpdzyp.us-west-2.rds.amazonaws.com:3306";
+private $_username = "admin1";
+	private $_password = "root12345";
+
+7) Save configuration file "Database"
+
+8) Zip the folder ( select all file inside the folder and do zip , do not zip folder from outside)
+
+9) Go to Beanstack and upload code
+
+
+
+10) Data Base Activity - you need to create some table space on rds for "schoolmanagement" application to work
+
+
+11) install mysql client on linux ec2 - yum install mqsql
+
+12) connect rds sql server as like - mysql -h mydboption.c2mizpjpdzyp.us-west-2.rds.amazonaws.com -P 3306 -u admin1 -p schoolmanagement
+
+13) Verify database and tables creation - mysql> show databases;
+
+14) Verify table spaces is created - mysql> use schoolmanagement;
+
+                                     mysql> show tables;
+
+15) From Beanstack application run add courses and see changes happening in tables- mysql> select * from tbl_course;
+
+Login for portal is admin:admin
